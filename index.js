@@ -2,13 +2,14 @@ import * as R from 'rodin/core';
 import {Sky} from './Sky.js';
 import {resort} from './terrain.js';
 import {clouds} from './clouds.js';
+import './interface.js';
 R.start();
 
 
 R.Scene.add(new R.Sculpt(new THREE.AmbientLight(0xffffff, 0.7)));
 
 R.Scene.HMDCamera._threeObject.far = 500;
-
+R.Scene.HMDCamera.focalLength = 11;
 
 
 const light = new THREE.DirectionalLight(0xfffde9, 0.8, 200);
