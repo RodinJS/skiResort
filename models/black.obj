@@ -1,5 +1,7 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 04.10.2017 14:03:25
+# File Created: 04.10.2017 14:09:07
+
+mtllib black.mtl
 
 #
 # object cascade
@@ -70,6 +72,7 @@ vn 0.1940 0.9158 -0.3517
 # 30 vertex normals
 
 g cascade
+usemtl Material__70
 s 1
 f 1//1 2//2 3//3 4//4 
 f 5//5 6//6 2//2 1//1 
@@ -264,6 +267,7 @@ vn 0.2459 0.9512 -0.1864
 # 84 vertex normals
 
 g mary_s_way
+usemtl Material__70
 s 1
 f 31//31 32//32 33//33 34//34 
 f 35//35 36//36 32//32 31//31 
@@ -395,6 +399,7 @@ vn 0.2473 0.8990 -0.3614
 # 39 vertex normals
 
 g wolt_tongue
+usemtl Material__70
 s 1
 f 115//115 116//116 117//117 118//118 
 f 119//119 120//120 116//116 115//115 
@@ -534,6 +539,7 @@ vn 0.0602 0.8669 -0.4948
 # 54 vertex normals
 
 g alpenhorn
+usemtl Material__70
 s 1
 f 154//154 155//155 156//156 157//157 
 f 158//158 159//159 155//155 154//154 
@@ -644,6 +650,7 @@ vn -0.0309 0.9067 -0.4206
 # 36 vertex normals
 
 g red_tail
+usemtl Material__70
 s 1
 f 208//208 209//209 210//210 
 f 211//211 212//212 208//208 210//210 
@@ -912,6 +919,7 @@ vn -0.0009 0.9308 -0.3656
 # 119 vertex normals
 
 g muleshoe
+usemtl Material__70
 s 1
 f 244//244 245//245 246//246 
 f 247//247 248//248 245//245 244//244 
@@ -1045,6 +1053,7 @@ vn 0.3042 0.9523 0.0232
 # 31 vertex normals
 
 g phychopath
+usemtl Material__70
 s 1
 f 363//363 364//364 365//365 
 f 366//366 367//367 364//364 363//363 
@@ -1092,6 +1101,7 @@ vn 0.3013 0.8894 -0.3437
 # 10 vertex normals
 
 g upper_diamond_back
+usemtl Material__70
 s 1
 f 394//394 395//395 396//396 397//397 
 f 398//398 399//399 395//395 394//394 
@@ -1234,6 +1244,7 @@ vn 0.2412 0.9574 -0.1584
 # 63 vertex normals
 
 g challenge
+usemtl Material__70
 s 1
 f 404//404 405//405 406//406 407//407 
 f 408//408 409//409 405//405 404//404 
@@ -1455,6 +1466,7 @@ vn 0.1308 0.9308 -0.3414
 # 89 vertex normals
 
 g corona
+usemtl Material__70
 s 1
 f 467//467 468//468 469//469 470//470 
 f 471//471 472//472 468//468 467//467 

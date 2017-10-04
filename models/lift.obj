@@ -1,5 +1,7 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 04.10.2017 14:02:36
+# File Created: 04.10.2017 14:09:52
+
+mtllib lift.mtl
 
 #
 # object little_hawk
@@ -204,6 +206,7 @@ vn -0.3430 0.9385 -0.0394
 # 70 vertex normals
 
 g little_hawk
+usemtl Material__54
 s 8
 f 1//1 2//2 3//1 
 f 4//2 5//3 2//2 
@@ -607,6 +610,7 @@ vn -0.3430 0.9385 -0.0394
 # 59 vertex normals
 
 g ez
+usemtl Material__54
 s 8
 f 125//71 126//72 127//71 
 f 128//72 129//73 126//72 
@@ -1073,6 +1077,7 @@ vn 0.6885 -0.0001 0.7253
 # 106 vertex normals
 
 g caribou
+usemtl Material__54
 s 8
 f 249//130 250//131 251//130 
 f 252//131 253//132 250//131 
@@ -1429,6 +1434,7 @@ vn 0.9839 0.0001 -0.1788
 # 26 vertex normals
 
 g tenderfoot
+usemtl Material__54
 s 8
 f 389//236 390//237 391//236 
 f 392//237 393//238 390//237 
@@ -1752,6 +1758,7 @@ vn -0.1513 0.9385 -0.3104
 # 69 vertex normals
 
 g sundance
+usemtl Material__54
 s 8
 f 449//262 450//263 451//262 
 f 452//263 453//264 450//263 
@@ -2158,6 +2165,7 @@ vn -0.1513 0.9385 -0.3104
 # 57 vertex normals
 
 g race
+usemtl Material__54
 s 8
 f 581//331 582//332 583//331 
 f 584//332 585//333 582//332 
@@ -2718,6 +2726,7 @@ vn -0.1513 0.9385 -0.3104
 # 133 vertex normals
 
 g challenge
+usemtl Material__54
 s 8
 f 685//388 686//389 687//388 
 f 688//389 689//390 686//389 
@@ -3470,6 +3479,7 @@ vn -0.0192 0.0000 -0.9998
 # 90 vertex normals
 
 g cannonball
+usemtl Material__54
 s 8
 f 929//521 930//522 931//521 
 f 932//522 933//523 930//522 
@@ -4327,6 +4337,7 @@ vn -0.6129 0.0000 0.7901
 # 166 vertex normals
 
 g indian_peaks
+usemtl Material__54
 s 8
 f 1149//611 1150//612 1151//611 
 f 1152//612 1153//613 1150//612 
@@ -5205,6 +5216,7 @@ vn -0.3062 0.9385 -0.1594
 # 155 vertex normals
 
 g corona
+usemtl Material__54
 s 8
 f 1413//777 1414//778 1415//777 
 f 1416//778 1417//779 1414//778 

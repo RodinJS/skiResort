@@ -1,5 +1,7 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 04.10.2017 14:03:17
+# File Created: 04.10.2017 14:09:18
+
+mtllib black_double.mtl
 
 #
 # object liftline
@@ -222,6 +224,7 @@ vn 0.2748 0.8316 -0.4826
 # 106 vertex normals
 
 g liftline
+usemtl Material__71
 s 1
 f 1//1 2//2 3//3 4//4 
 f 5//5 6//6 2//2 1//1 
@@ -522,6 +525,7 @@ vn 0.1874 0.9710 -0.1486
 # 118 vertex normals
 
 g west_ridge
+usemtl Material__71
 s 1
 f 107//107 108//108 109//109 110//110 
 f 111//111 112//112 108//108 107//107 
@@ -644,6 +648,7 @@ vn 0.4891 0.7819 -0.3866
 # 26 vertex normals
 
 g ambush
+usemtl Material__71
 s 1
 f 225//225 226//226 227//227 228//228 
 f 229//229 230//230 226//226 225//225 

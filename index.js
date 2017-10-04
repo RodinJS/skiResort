@@ -9,8 +9,8 @@ const b = R.Scene.active._scene.children.filter(i=>i instanceof THREE.AmbientLig
 b.intensity = 0.7;
 //b.color.setHex(0xe3f0ff);
 
-R.Scene.HMDCamera._threeObject.far = 500;
-R.Scene.HMDCamera.focalLength = 11;
+R.Avatar.active.HMDCamera._threeObject.far = 500;
+R.Avatar.active.HMDCamera.focalLength = 11;
 
 
 const light = new THREE.DirectionalLight(0xfffde9, 0.8, 200);
@@ -162,7 +162,7 @@ R.Scene.active.on(R.CONST.GAMEPAD_BUTTON_UP, (e) => {
 
 clouds.on(R.CONST.READY, (evt) => {
     R.Scene.add(evt.target);
-    clouds.scale.set(20,20,20)
+    clouds.scale.set(20,20,20);
     clouds.visible = false;
     evt.target.position.copy(resort.position);
     evt.target.position.y += 10;

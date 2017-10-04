@@ -1,5 +1,7 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 04.10.2017 14:02:53
+# File Created: 04.10.2017 14:09:35
+
+mtllib green.mtl
 
 #
 # object foxtail
@@ -46,6 +48,7 @@ vn 0.0728 0.9834 -0.1662
 # 18 vertex normals
 
 g foxtail
+usemtl Material__68
 s 1
 f 1//1 2//2 3//3 4//4 
 f 5//5 6//6 2//2 1//1 
@@ -98,6 +101,7 @@ vn 0.1746 0.9836 -0.0457
 # 16 vertex normals
 
 g easyway
+usemtl Material__68
 s 1
 f 19//19 20//20 21//21 22//22 
 f 23//23 24//24 20//20 19//19 
@@ -163,6 +167,7 @@ vn 0.2383 0.9711 -0.0106
 # 23 vertex normals
 
 g summer_road
+usemtl Material__68
 s 1
 f 35//35 36//36 37//37 
 f 38//38 39//39 36//36 35//35 
@@ -226,6 +231,7 @@ vn 0.1313 0.9718 -0.1958
 # 20 vertex normals
 
 g little_hawk
+usemtl Material__68
 s 1
 f 58//58 59//59 60//60 61//61 
 f 62//62 63//63 59//59 58//58 
@@ -315,6 +321,7 @@ vn 0.2093 0.9778 0.0017
 # 34 vertex normals
 
 g snail
+usemtl Material__68
 s 1
 f 78//78 79//79 80//80 81//81 
 f 82//82 83//83 79//79 78//78 
@@ -391,6 +398,7 @@ vn -0.0450 0.9908 -0.1274
 # 24 vertex normals
 
 g uncle_bob_s
+usemtl Material__68
 s 1
 f 112//112 113//113 114//114 115//115 
 f 116//116 117//117 113//113 112//112 
@@ -509,6 +517,7 @@ vn 0.2138 0.9649 -0.1528
 # 49 vertex normals
 
 g bunnyfair
+usemtl Material__68
 s 1
 f 136//136 137//137 138//138 139//138 
 f 140//139 141//140 137//137 136//136 
