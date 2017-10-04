@@ -5,8 +5,9 @@ import {clouds} from './clouds.js';
 import './interface.js';
 R.start();
 
-
-R.Scene.add(new R.Sculpt(new THREE.AmbientLight(0xffffff, 0.7)));
+const b = R.Scene.active._scene.children.filter(i=>i instanceof THREE.AmbientLight)[0];
+b.intensity = 0.7;
+//b.color.setHex(0xe3f0ff);
 
 R.Scene.HMDCamera._threeObject.far = 500;
 R.Scene.HMDCamera.focalLength = 11;
@@ -18,7 +19,7 @@ light.position.set(-30, 25, 30);
 R.Scene.add(resort);
 R.Scene.add(new R.Sculpt(light));
 
-const cylinder = new R.Cylinder(120, 120, 30, 256, 1, true/*,-Math.PI/11, Math.PI*1.11*/, new THREE.MeshBasicMaterial({
+const cylinder = new R.Cylinder(72, 72, 20, 256, 1, true,-Math.PI/8, Math.PI+Math.PI/4, new THREE.MeshBasicMaterial({
     transparent: true,
     opacity: 0.4,
     //wireframe: true,
@@ -27,11 +28,13 @@ const cylinder = new R.Cylinder(120, 120, 30, 256, 1, true/*,-Math.PI/11, Math.P
 }));
 cylinder.on(R.CONST.READY, e => {
     cylinder.material.map.wrapS = cylinder.material.map.wrapT = THREE.RepeatWrapping;
-    cylinder.material.map.repeat.set(24, 1);
+    cylinder.material.map.repeat.set(14, 1);
 });
-cylinder.rotation.z = Math.PI / 2 - 0.072;
-//cylinder.position.y = -30;
-cylinder.position.x = 40;
+cylinder.rotation.y = Math.PI / 2;
+cylinder.rotation.x = Math.PI / 2.4;
+cylinder.position.y = 10;
+cylinder.position.x = 0;
+cylinder.position.z = -70;
 R.Scene.add(cylinder);
 
 
@@ -41,18 +44,18 @@ let sunSphere = new R.Sphere(5, 32, 32, new THREE.MeshBasicMaterial({
     color: 0xffffff,
     map: R.Loader.loadTexture("./img/moon.jpg")
 }));
-sunSphere.position.y = -100;
+sunSphere.position.y = -150;
 sunSphere.rotation.y = -Math.PI / 2;
 sunSphere.visible = true;
 
 const sky = new Sky({
-    "turbidity": 6.5,
-    "rayleigh": 1.466,
-    "mieCoefficient": 0.004,
-    "mieDirectionalG": 0.887,
-    "luminance": 1.1,
-    "inclination": 0.49,
-    "azimuth": 0.3,
+    "turbidity": 1,
+    "rayleigh": 0.252,
+    "mieCoefficient": 0.002,
+    "mieDirectionalG": 0.998,
+    "luminance": 1,
+    "inclination": 0.28,
+    "azimuth": 0.37,
     "sun": false
 }, sunSphere, light, 130.5);
 R.Scene.add(sky);
@@ -124,18 +127,20 @@ sky.on(R.CONST.ANIMATION_COMPLETE, (e) => {
 
 
 cylinder.on(R.CONST.GAMEPAD_HOVER, (e) => {
-    //if(e.point.y >= 0 ){
-    cylinder.animation.start('fadeinAnim');
-    sky.constUpdate = true;
-    sky.animation.start('fadeoutSunAnim');
-    //}
+    if(!resort.hoverred ){
+        cylinder.animation.start('fadeinAnim');
+        sky.constUpdate = true;
+        sky.animation.start('fadeoutSunAnim');
+    }
 });
 
 cylinder.on(R.CONST.GAMEPAD_HOVER_OUT, (e) => {
-    //if(sky.effectController.turbidity == 6.5) return;
-    cylinder.animation.start('fadeoutAnim');
-    sky.constUpdate = true;
-    sky.animation.start('fadeinSunAnim');
+
+    if(!resort.hoverred ) {
+        cylinder.animation.start('fadeoutAnim');
+        sky.constUpdate = true;
+        sky.animation.start('fadeinSunAnim');
+    }
 });
 
 cylinder.on(R.CONST.GAMEPAD_BUTTON_DOWN, (e) => {
@@ -155,6 +160,15 @@ R.Scene.active.on(R.CONST.GAMEPAD_BUTTON_UP, (e) => {
     navigator.mouseGamePad.stopPropagationOnMouseMove = false;
 });
 
+clouds.on(R.CONST.READY, (evt) => {
+    R.Scene.add(evt.target);
+    clouds.scale.set(20,20,20)
+    clouds.visible = false;
+    evt.target.position.copy(resort.position);
+    evt.target.position.y += 10;
+
+    evt.target.rotation.y = -Math.PI / 2;
+});
 sky.on(R.CONST.GAMEPAD_MOVE, (e) => {
     if (sky.engaged) {
 
@@ -181,13 +195,13 @@ sky.on(R.CONST.GAMEPAD_MOVE, (e) => {
         }
 
         if(angle < 0.4 &&  angle > 0.3){
-            if(!clouds.visible){
+            if(!clouds.visible ){
                 clouds.show();
             }
         }
         else{
-            if(clouds.hide()){
-                clouds.show();
+            if(clouds.visible && !clouds.hiding){
+                clouds.hide();
             }
         }
         sky.effectController.inclination = angle;

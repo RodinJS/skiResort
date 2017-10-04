@@ -2,16 +2,16 @@ import * as R from 'rodin/core';
 
 export const resort = new R.Sculpt();
 
-// resort.scale.set(0.03,0.03,0.03);
+ resort.scale.set(0.3,0.3,0.3);
 resort.rotation.y = -1.8;
 //resort.position.x = -0.5;
-resort.position.y = -20;//0.8;
+resort.position.y = -6;//0.8;
 // resort.position.x = 15;//-0.5;
-resort.position.z = -35;//-0.5;
+resort.position.z = -10;//-0.5;
 const pivot = new R.Sculpt();
 R.Scene.add(pivot);
 pivot.position.copy(resort.position);
-const plane = new R.Plane(150,150, new THREE.MeshBasicMaterial({transparent:true, opacity:0, depthWrite:false}));
+const plane = new R.Plane(120,120, new THREE.MeshBasicMaterial({transparent:true, opacity:0, depthWrite:false}));
 R.Scene.add(plane);
 plane.position.copy(resort.position);
 plane.rotation.x = -Math.PI/2;
@@ -40,7 +40,14 @@ plane.on(R.CONST.GAMEPAD_BUTTON_DOWN, (evt) => {
 terrain.on(R.CONST.GAMEPAD_BUTTON_DOWN, (evt) => {
     //evt.stopPropagation();
     //navigator.mouseGamePad.stopPropagationOnMouseMove = true;
-    terrain.doRotate = true;
+    if(evt.gamepad instanceof R.MouseGamePad){
+        if(evt.keyCode === R.CONST.MOUSE_RIGHT) {
+            terrain.doRotate = true;
+        }
+    }
+    else{
+        terrain.doRotate = true;
+    }
 });
 
 R.Scene.active.on(R.CONST.GAMEPAD_BUTTON_UP, (evt) => {
@@ -50,13 +57,14 @@ R.Scene.active.on(R.CONST.GAMEPAD_BUTTON_UP, (evt) => {
 });
 
 terrain.on(R.CONST.GAMEPAD_HOVER, (evt) => {
-    evt.stopPropagation();
+    resort.hoverred = true;
 });
 plane.on(R.CONST.GAMEPAD_HOVER_OUT, (evt) => {
     terrain.doRotate = false;
+    resort.hoverred = false;
 });
 plane.on(R.CONST.GAMEPAD_MOVE, (evt) => {
-    if(terrain.doRotate){
+    if(terrain.doRotate && plane.initialPos){
         const initialAngle = getAngle(plane.initialPos);
         const currPoint = new THREE.Vector3(evt.point.x, evt.point.y, evt.point.z);
         plane._threeObject.worldToLocal(currPoint);
@@ -65,7 +73,6 @@ plane.on(R.CONST.GAMEPAD_MOVE, (evt) => {
         //console.log(evt.point.valueOf(),resort.initialRot.y, currAngle - initialAngle)
     }
 });
-
 function getAngle(dir) {
     let angle = Math.atan(dir.y / dir.x);
     if (dir.x > 0) {

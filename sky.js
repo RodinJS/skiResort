@@ -58,9 +58,10 @@ export class Sky extends R.Sculpt {
         this.sunSphere.position.z = this.distance*0.8 * Math.sin(phi) * Math.cos(theta);
 
         this.sunSphere.visible = this.effectController.sun;
-
-        this.uniforms.sunPosition.value.copy(this.sunSphere.position);
-        this.light.position.copy(this.sunSphere.position);
+        const v = new THREE.Vector3().copy(this.sunSphere.position);
+        v.applyAxisAngle ( {x:0,y:1,z:0}, Math.PI/2 );
+        this.uniforms.sunPosition.value.copy(v);
+        this.light.position.copy(v);
     }
 
     set constUpdate(value) {
@@ -164,7 +165,7 @@ const skyShader = {
         'uniform float luminance;',
         'uniform float mieDirectionalG;',
 
-        'const vec3 cameraPos = vec3( 0.0, -30.0, 0.0 );',
+        'const vec3 cameraPos = vec3( 0.0, -16.0, 0.0 );',
 
         // constants for atmospheric scattering
         'const float pi = 3.141592653589793238462643383279502884197169;',

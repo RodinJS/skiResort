@@ -73,8 +73,7 @@ System.register(['../eventEmitter', '../messenger', '../error', '../utils', '../
                         this._scene.add(this._sculpt._threeObject);
                     });
                     this._sculpt._scene = this;
-                    //this._scene.add(new THREE.AmbientLight());
-
+                    this._scene.add(new THREE.AmbientLight());
 
                     /**
                      * Array of cameras of the scene
