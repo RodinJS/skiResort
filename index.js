@@ -13,8 +13,8 @@ ambientLight.intensity = 0.7;
 const rgb = hslToRgb(25, 1, 1);
 ambientLight.color.setRGB(rgb[0]/255, rgb[1]/255, rgb[2]/255);
 
-R.Scene.HMDCamera._threeObject.far = 500;
-R.Scene.HMDCamera.focalLength = 11;
+R.Avatar.active.HMDCamera._threeObject.far = 500;
+R.Avatar.active.HMDCamera.focalLength = 11;
 
 
 const light = new THREE.DirectionalLight(0xffffff, 0.8, 200);
