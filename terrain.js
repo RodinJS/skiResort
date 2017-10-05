@@ -59,20 +59,19 @@ plane.on(R.CONST.GAMEPAD_HOVER_OUT, (evt) => {
     resort.hoverred = false;
 });
 plane.on(R.CONST.GAMEPAD_MOVE, (evt) => {
-    if (terrain.doRotate && plane.initialPos) {
-        const initialAngle = getAngle(plane.initialPos);
+    if(terrain.doRotate && plane.initialPos){
+        const initialAngle = resort.getAngle(plane.initialPos, "y", "x");
         const currPoint = new THREE.Vector3(evt.point.x, evt.point.y, evt.point.z);
         plane._threeObject.worldToLocal(currPoint);
-        const currAngle = getAngle(currPoint);
+        const currAngle = resort.getAngle(currPoint, "y", "x");
         resort.rotation.y = resort.initialRot.y - (currAngle - initialAngle);
         //console.log(evt.point.valueOf(),resort.initialRot.y, currAngle - initialAngle)
     }
 });
-
-function getAngle(dir) {
-    let angle = Math.atan(dir.y / dir.x);
-    if (dir.x > 0) {
-        if (dir.y > 0) {
+resort.getAngle = function(dir, axis1, axis2) {
+    let angle = Math.atan(dir[axis1] / dir[axis2]);
+    if (dir[axis2] > 0) {
+        if (dir[axis1] > 0) {
             angle = -Math.PI + angle
         } else {
             angle = Math.PI + angle
