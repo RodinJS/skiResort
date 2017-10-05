@@ -1,5 +1,5 @@
 import * as R from 'rodin/core';
-import {Pin} from './Pin.js';
+
 
 export const resort = new R.Sculpt();
 
@@ -78,7 +78,7 @@ resort.getAngle = function(dir, axis1, axis2) {
         }
     }
     return angle;
-}
+};
 
 
 const forest = new R.Sculpt('./models/tree.obj');
@@ -98,26 +98,6 @@ forest.on(R.CONST.READY, (evt) => {
     });
 });
 
-const tracks = new R.Sculpt();
-resort.add(tracks);
-
-const black_tracks = new R.Sculpt('./models/black.obj');
-black_tracks.on(R.CONST.READY, (evt) => {
-    tracks.add(evt.target);
-});
-const black_double_tracks = new R.Sculpt('./models/black_double.obj');
-black_double_tracks.on(R.CONST.READY, (evt) => {
-    tracks.add(evt.target);
-});
-const blue_tracks = new R.Sculpt('./models/blue.obj');
-blue_tracks.on(R.CONST.READY, (evt) => {
-    tracks.add(evt.target);
-});
-const green_tracks = new R.Sculpt('./models/green.obj');
-green_tracks.on(R.CONST.READY, (evt) => {
-    tracks.add(evt.target);
-});
-
 const lifts = new R.Sculpt('./models/lift.obj');
 lifts.on(R.CONST.READY, (evt) => {
     resort.add(evt.target);
@@ -128,12 +108,3 @@ lakes.on(R.CONST.READY, (evt) => {
     resort.add(evt.target);
 });
 
-const positions = new R.Sculpt('./models/cafe_points.obj');
-positions.on(R.CONST.READY, (e) => {
-    const pos = e.target._threeObject.children["0"].geometry.attributes.position.array;
-    for (let i = 0; i < pos.length; i += 9) {
-        let cafeIcon = new Pin('img/cafe_icon.png', new R.Vector3(pos[i], pos[i + 1], pos[i + 2]));
-        cafeIcon.scale.set(4, 4, 4);
-        resort.add(cafeIcon);
-    }
-});
