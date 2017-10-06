@@ -1,12 +1,9 @@
 import * as R from 'rodin/core';
 import {bottomInterfaceLeft, bottomInterfaceRight} from './bottomInterface.js'
+import VideoContainer from './videoContainer.js';
 
 const interfaceSculpt = new R.Sculpt();
-
-const leftInterface = new R.Plane(0.45, 1.02 * 1.3, new THREE.MeshBasicMaterial({
-    transparent: true,
-    map: R.Loader.loadTexture('img/Group-25@2x.png')
-}));
+let {leftInterface} = VideoContainer;
 leftInterface.position.set(-1.4, .1, -1.2);
 leftInterface.rotation.y = Math.PI / 6;
 interfaceSculpt.add(leftInterface);
