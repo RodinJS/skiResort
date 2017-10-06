@@ -7,6 +7,7 @@ const leftInterface = new R.Plane(0.45, 1.02 * 1.3, new THREE.MeshBasicMaterial(
     transparent: true,
     map: R.Loader.loadTexture('img/Group-25@2x.png')
 }));
+
 leftInterface.position.set(-1.4, .1, -1.2);
 leftInterface.rotation.y = Math.PI / 6;
 interfaceSculpt.add(leftInterface);

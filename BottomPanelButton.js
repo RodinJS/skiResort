@@ -1,12 +1,13 @@
 import * as R from 'rodin/core';
 
 export class BottomPanelButton extends R.Sculpt {
-    constructor(width, restBg, hoverBg, pin, pinSelected, color) {
+    constructor(width, restBg, hoverBg, pin, pinSelected, mat) {
         super();
 
         this.pin = pin;
-        this.color = color;
-        if (!this.color) this.pin.visible = pinSelected;
+        this.mat = mat;
+        if(this.mat) this.color = this.mat.clone().color;
+        if (!this.mat) this.pin.visible = pinSelected;
         this.position.z = 0.0001;
 
         const rest = new R.Plane(width, new THREE.MeshBasicMaterial({
@@ -37,30 +38,28 @@ export class BottomPanelButton extends R.Sculpt {
         });
 
         this.hover.on(R.CONST.GAMEPAD_BUTTON_UP, () => {
+
+            console.log(this.color);
             if (!this.selected) {
                 this.hover.visible = true;
-                if (!this.color) {
+                if (!this.mat) {
                     this.pin.visible = true;
                 } else {
                     if(this.pin.isReady){
-                        for (let i = 0; i < this.pin._threeObject.children.length; i++) {
-                            this.pin._threeObject.children[i].material.color.r = this.color.r;
-                            this.pin._threeObject.children[i].material.color.g = this.color.g;
-                            this.pin._threeObject.children[i].material.color.b = this.color.b;
-                        }
+                        this.mat.color.r = this.color.r;
+                        this.mat.color.g = this.color.g;
+                        this.mat.color.b = this.color.b;
                     }
                 }
                 this.selected = true;
             } else {
-                if (!this.color) {
+                if (!this.mat) {
                     this.pin.visible = false;
                 }else {
                     if(this.pin.isReady){
-                        for (let i = 0; i < this.pin._threeObject.children.length; i++) {
-                            this.pin._threeObject.children[i].material.color.r = 0.4;
-                            this.pin._threeObject.children[i].material.color.g = 0.4;
-                            this.pin._threeObject.children[i].material.color.b = 0.4;
-                        }
+                        this.mat.color.r = 0.4;
+                        this.mat.color.g = 0.4;
+                        this.mat.color.b = 0.4;
                     }
                 }
                 this.selected = false;

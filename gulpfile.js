@@ -10,6 +10,7 @@ const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const size = require('gulp-size');
 const connect = require('gulp-connect');
+const newer = require('gulp-newer');
 const sourcemaps = require('gulp-sourcemaps');
 
 const JS = ['!systemjs/**/*.*', '!node_modules/**/*.*', '!dist/**/*.*', '!build/**/*.*', '*.js', '**/*.js'];
@@ -24,6 +25,7 @@ gulp.task('js', () => {
         .pipe(plumber(ERROR_MESSAGE))
         .pipe(babel())
         .pipe(s)
+        .pipe(newer('./build/app'))
         .pipe(plumber.stop())
         .pipe(gulp.dest('./build'))
         .pipe(notify({
@@ -35,7 +37,7 @@ gulp.task('js', () => {
 
 gulp.task('watch', function () {
     watch(JS, batch(function (events, done) {
-        gulp.start(['dev'], done);
+        gulp.start(['js'], done);
     }));
 });
 
