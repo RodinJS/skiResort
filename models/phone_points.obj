@@ -1,0 +1,20 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 05.10.2017 18:29:53
+
+#
+# object phone
+#
+
+v  24.5260 2.9891 4.4251
+v  24.4139 2.9891 4.2310
+v  24.3018 2.9891 4.4251
+# 3 vertices
+
+vn 0.0000 1.0000 -0.0000
+# 1 vertex normals
+
+g phone
+s 1
+f 1//1 2//1 3//1 
+# 0 polygons - 1 triangles
+
