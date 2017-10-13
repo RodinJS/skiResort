@@ -21,16 +21,11 @@ const ERROR_MESSAGE = {
 gulp.task('js', () => {
     const s = size({title: 'JS -> ', pretty: true});
     return gulp.src(JS)
-        .pipe(plumber(ERROR_MESSAGE))
         .pipe(babel())
         .pipe(s)
         .pipe(newer('./build'))
         .pipe(plumber.stop())
         .pipe(gulp.dest('./build'))
-        .pipe(notify({
-            onLast: true,
-            message: () => `JS - Total size ${s.prettySize}`
-        }));
 });
 
 
@@ -48,6 +43,7 @@ gulp.task('connect', () => {
     connect.server({
         root: './',
         port: 9000,
+        livereload: true
     });
 });
 
@@ -57,5 +53,5 @@ gulp.task('dev', (done) => {
 
 
 gulp.task('default', (done) => {
-    sequence('watch', ['js', 'connect'], done);
+    sequence('js', ['watch', 'connect'], done);
 });

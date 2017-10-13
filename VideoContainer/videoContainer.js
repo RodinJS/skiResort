@@ -44,7 +44,7 @@ class VideoContainer {
         });
         this.infoText.on(R.CONST.READY, (e) => {
             this.infoText.center();
-            this.infoText.position.set(-.075,  .58, .05);
+            this.infoText.position.set(-.075, .58, .05);
             this.infoText.rotation.y = 0.1;
             this.leftInterface.add(this.infoText);
         });
@@ -63,6 +63,15 @@ class VideoContainer {
         this.leftInterface.rotation.y = Math.PI / 6;
         this.leftInterface.on(R.CONST.READY, this.createThumbs.bind(this));
         this.setDots = this.setDots.bind(this);
+        this.dotsContainer = new R.Sculpt();
+        this.leftInterface.add(this.dotsContainer);
+        this.dotsContainer.on(R.CONST.READY, () => {
+            let height = 0;
+            this.dotsContainer._children.map((dot) => {
+                height += dot.geometry.parameters.radius;
+            });
+            this.dotsContainer.position.y = (this.height / 2) - height;
+        })
     }
 
     createThumbs() {
@@ -98,11 +107,11 @@ class VideoContainer {
         let dot = new Dot();
         dot.id = $index;
         dot.element.on(R.CONST.READY, () => {
-            this.leftInterface.add(dot.element);
+            this.dotsContainer.add(dot.element);
             dot.element.position.set(.25, -($index * 0.05), 0);
             dot.element.rotation.y = .8;
             dot.element.id = $index;
-            if($index === 0) {
+            if ($index === 0) {
                 dot.isActive = true;
                 dot.activeColor = '0x66b1ee';
             }
