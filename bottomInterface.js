@@ -14,66 +14,46 @@ const leftButtons = [];
 const tracks = new R.Sculpt();
 resort.add(tracks);
 
+const blueMat = new THREE.MeshPhongMaterial({color: 0x299ed7});
 const blue_tracks = new R.Sculpt('./models/blue.obj');
 blue_tracks.on(R.CONST.READY, (evt) => {
     for (let i = 0; i < evt.target._threeObject.children.length; i++) {
-        evt.target._threeObject.children[i].material.color.r = 0.0039;
-        evt.target._threeObject.children[i].material.color.g = 0.3843;
-        evt.target._threeObject.children[i].material.color.b = 0.5804;
+        evt.target._threeObject.children[i].material = blueMat;
     }
     tracks.add(evt.target);
 });
+const greenMat = new THREE.MeshPhongMaterial({color: 0x34ab35});
 const green_tracks = new R.Sculpt('./models/green.obj');
 green_tracks.on(R.CONST.READY, (evt) => {
     for (let i = 0; i < evt.target._threeObject.children.length; i++) {
-        evt.target._threeObject.children[i].material.color.r = 0.2;
-        evt.target._threeObject.children[i].material.color.g = 0.502;
-        evt.target._threeObject.children[i].material.color.b = 0.1608;
+        evt.target._threeObject.children[i].material = greenMat;
     }
     tracks.add(evt.target);
 });
+const blackMat = new THREE.MeshPhongMaterial({color: 0x1c3e4f});
 const black_tracks = new R.Sculpt('./models/black.obj');
 black_tracks.on(R.CONST.READY, (evt) => {
     for (let i = 0; i < evt.target._threeObject.children.length; i++) {
-        evt.target._threeObject.children[i].material.color.r = 0.0784;
-        evt.target._threeObject.children[i].material.color.g = 0.0784;
-        evt.target._threeObject.children[i].material.color.b = 0.0784;
+        evt.target._threeObject.children[i].material = blackMat;
     }
     tracks.add(evt.target);
 });
+const blackDoubleMat = new THREE.MeshPhongMaterial({color: 0x061d29});
 const black_double_tracks = new R.Sculpt('./models/black_double.obj');
 black_double_tracks.on(R.CONST.READY, (evt) => {
     for (let i = 0; i < evt.target._threeObject.children.length; i++) {
-        evt.target._threeObject.children[i].material.color.r = 0.0275;
-        evt.target._threeObject.children[i].material.color.g = 0.0275;
-        evt.target._threeObject.children[i].material.color.b = 0.0275;
+        evt.target._threeObject.children[i].material = blackDoubleMat;
     }
     tracks.add(evt.target);
 });
 
-const blueBtn = new BottomPanelButton(leftBtnWidth, 'img/Tracks/Rest/Blue.png', 'img/Tracks/Hover/Blue.png', blue_tracks, true, {
-    r: 0.0039,
-    g: 0.3843,
-    b: 0.5804
-});
+const blueBtn = new BottomPanelButton(leftBtnWidth, 'img/Tracks/Rest/Blue.png', 'img/Tracks/Hover/Blue.png', blue_tracks, true, blueMat);
 leftButtons.push(blueBtn);
-const greenBtn = new BottomPanelButton(leftBtnWidth, 'img/Tracks/Rest/Green.png', 'img/Tracks/Hover/Green.png', green_tracks, true, {
-    r: 0.2,
-    g: 0.502,
-    b: 0.1608
-});
+const greenBtn = new BottomPanelButton(leftBtnWidth, 'img/Tracks/Rest/Green.png', 'img/Tracks/Hover/Green.png', green_tracks, true, greenMat);
 leftButtons.push(greenBtn);
-const diamondBtn = new BottomPanelButton(leftBtnWidth, 'img/Tracks/Rest/Diamond.png', 'img/Tracks/Hover/Diamond.png', black_tracks, true, {
-    r: 0.0784,
-    g: 0.0784,
-    b: 0.0784
-});
+const diamondBtn = new BottomPanelButton(leftBtnWidth, 'img/Tracks/Rest/Diamond.png', 'img/Tracks/Hover/Diamond.png', black_tracks, true, blackMat);
 leftButtons.push(diamondBtn);
-const doubleBtn = new BottomPanelButton(leftBtnWidth, 'img/Tracks/Rest/Double diamond.png', 'img/Tracks/Hover/Double diamond.png', black_double_tracks, true, {
-    r: 0.0275,
-    g: 0.0275,
-    b: 0.0275
-});
+const doubleBtn = new BottomPanelButton(leftBtnWidth, 'img/Tracks/Rest/Double diamond.png', 'img/Tracks/Hover/Double diamond.png', black_double_tracks, true, blackDoubleMat);
 leftButtons.push(doubleBtn);
 
 const interfaceLeftWidth = leftButtons.length * (leftBtnWidth + padding) + padding;

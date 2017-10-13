@@ -24,7 +24,7 @@ gulp.task('js', () => {
         .pipe(plumber(ERROR_MESSAGE))
         .pipe(babel())
         .pipe(s)
-        .pipe(newer('./build/app'))
+        .pipe(newer('./build'))
         .pipe(plumber.stop())
         .pipe(gulp.dest('./build'))
         .pipe(notify({
@@ -48,7 +48,6 @@ gulp.task('connect', () => {
     connect.server({
         root: './',
         port: 9000,
-        livereload: true
     });
 });
 
@@ -58,5 +57,5 @@ gulp.task('dev', (done) => {
 
 
 gulp.task('default', (done) => {
-    sequence('watch', ['connect'], done);
+    sequence('watch', ['js', 'connect'], done);
 });

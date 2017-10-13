@@ -2,7 +2,7 @@
  * Created by Reinchard on 10/6/2017.
  */
 import * as R from 'rodin/core';
-import {VPcontrolPanel} from './VPcontrolPanel.js';
+import {VPcontrolPanel} from './VPControlPanel.js';
 
 
 export class VideoPlayerScene {
