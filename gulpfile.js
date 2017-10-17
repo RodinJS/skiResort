@@ -13,7 +13,7 @@ const connect = require('gulp-connect');
 const newer = require('gulp-newer');
 const sourcemaps = require('gulp-sourcemaps');
 
-const JS = ['!systemjs/**/*.*', '!node_modules/**/*.*', '!dist/**/*.*', '!build/**/*.*', '*.js', '**/*.js'];
+const JS = ['!systemjs/**/*.*', '!node_modules/**/*.*', '!dist/**/*.*', '!build/**/*.*', '!gulpfile.js', '*.js', '**/*.js'];
 
 const ERROR_MESSAGE = {
     errorHandler: notify.onError("Error: <%= error.message %>")

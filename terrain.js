@@ -14,14 +14,37 @@ R.Scene.add(plane);
 plane.position.copy(resort.position);
 plane.rotation.x = -Math.PI / 2;
 
-const terrain = new R.Sculpt('./models/terrain.obj');
+let terrain = new R.Sculpt('./models/terrain.obj');
 terrain.on(R.CONST.READY, (evt) => {
-    resort.add(evt.target);
+    const geo = new THREE.Geometry().fromBufferGeometry(evt.target._threeObject.children["0"].geometry);
+    terrain = new R.Sculpt(new THREE.Mesh(geo, evt.target._threeObject.children["0"].material)) ;
+    terrain.on(R.CONST.GAMEPAD_BUTTON_DOWN, (evt) => {
+        if (evt.gamepad instanceof R.MouseGamePad) {
+            if (evt.keyCode === R.CONST.MOUSE_RIGHT) {
+                terrain.doRotate = true;
+            }
+        } else {
+            terrain.doRotate = true;
+        }
+    });
+    resort.add(terrain);
 });
-const forest = new R.Sculpt('./models/forest.obj');
+
+let forest = new R.Sculpt('./models/forest.obj');
 forest.on(R.CONST.READY, (evt) => {
-    forest._threeObject.children[0].material.color.setHex(0x618969);
-    resort.add(evt.target);
+    evt.target._threeObject.children[0].material.color.setHex(0x618969);
+    const geo = new THREE.Geometry().fromBufferGeometry(evt.target._threeObject.children["0"].geometry);
+    forest = new R.Sculpt(new THREE.Mesh(geo, evt.target._threeObject.children["0"].material)) ;
+    forest.on(R.CONST.GAMEPAD_BUTTON_DOWN, (evt) => {
+        if (evt.gamepad instanceof R.MouseGamePad) {
+            if (evt.keyCode === R.CONST.MOUSE_RIGHT) {
+                forest.doRotate = true;
+            }
+        } else {
+            forest.doRotate = true;
+        }
+    });
+    resort.add(forest);
 });
 
 
@@ -34,26 +57,6 @@ plane.on(R.CONST.GAMEPAD_BUTTON_DOWN, (evt) => {
         resort.initialRot = resort.rotation.clone();
     }
 });
-
-terrain.on(R.CONST.GAMEPAD_BUTTON_DOWN, (evt) => {
-    if (evt.gamepad instanceof R.MouseGamePad) {
-        if (evt.keyCode === R.CONST.MOUSE_RIGHT) {
-            terrain.doRotate = true;
-        }
-    } else {
-        terrain.doRotate = true;
-    }
-});
-forest.on(R.CONST.GAMEPAD_BUTTON_DOWN, (evt) => {
-    if (evt.gamepad instanceof R.MouseGamePad) {
-        if (evt.keyCode === R.CONST.MOUSE_RIGHT) {
-            forest.doRotate = true;
-        }
-    } else {
-        forest.doRotate = true;
-    }
-});
-
 R.Scene.active.on(R.CONST.GAMEPAD_BUTTON_UP, (evt) => {
     evt.stopPropagation();
     navigator.mouseGamePad.stopPropagationOnMouseMove = false;
@@ -114,11 +117,23 @@ resort.getAngle = function (dir, axis1, axis2) {
 
 const lifts = new R.Sculpt('./models/lift.obj');
 lifts.on(R.CONST.READY, (evt) => {
+    evt.target._threeObject = mergeModel(evt.target._threeObject);
     resort.add(evt.target);
+
 });
 
 const lakes = new R.Sculpt('./models/lakes.obj');
 lakes.on(R.CONST.READY, (evt) => {
+    evt.target._threeObject = mergeModel(evt.target._threeObject);
     resort.add(evt.target);
 });
+
+function mergeModel(obj, materialIndex = 0) {
+    let finalGeo =new THREE.Geometry();
+    for (let i = 0; i < obj.children.length; i++) {
+        finalGeo.merge(new THREE.Geometry().fromBufferGeometry(obj.children[""+i].geometry));
+    }
+    return new THREE.Mesh(finalGeo, obj.children[""+materialIndex].material);
+}
+
 
