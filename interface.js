@@ -3,10 +3,9 @@ import {bottomInterfaceLeft, bottomInterfaceRight} from './bottomInterface.js'
 import VideoContainer from './VideoContainer/videoContainer.js';
 
 const interfaceSculpt = new R.Sculpt();
-let {leftInterface} = VideoContainer;
+let leftInterface = VideoContainer.mainContainer;
 
 interfaceSculpt.add(leftInterface);
-
 const rightInterface = new R.Plane(.45, .729 * 1.3, new THREE.MeshBasicMaterial({
     transparent: true,
     map: R.Loader.loadTexture('img/Group-27@2x.png')

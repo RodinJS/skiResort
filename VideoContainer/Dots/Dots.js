@@ -5,7 +5,7 @@ import * as R from 'rodin/core';
 
 export class Dot {
     constructor() {
-        this.dot = new R.Sculpt(new THREE.Mesh(new THREE.CircleGeometry(0.008, 16), new THREE.MeshBasicMaterial({color: 0x3a4650})));
+        this.dot = new R.Sculpt(new THREE.Mesh(new THREE.CircleGeometry(Dot.radius, 16), new THREE.MeshBasicMaterial({color: 0x3a4650})));
         this.dot.on(R.CONST.GAMEPAD_HOVER, this.onElementHover.bind(this));
         this.dot.on(R.CONST.GAMEPAD_HOVER_OUT, this.onElementHoverOut.bind(this));
         this.dot.needsUpdate = true;
@@ -14,11 +14,15 @@ export class Dot {
     }
 
     static instance = [];
+    static radius = 0.008;
 
     onElementHover(e) {
         e.target.material.color.setHex('0x66b1ee');
     }
 
+    static get height() {
+        return Dot.radius
+    }
     get element() {
         return this.dot
     }
