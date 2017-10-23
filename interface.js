@@ -4,8 +4,7 @@ import VideoContainer from './VideoContainer/videoContainer.js';
 import {WeatherInterface} from './weatherInterface/WeatherInterface.js';
 
 const interfaceSculpt = new R.Sculpt();
-let {leftInterface} = VideoContainer;
-console.log(VideoContainer.height);
+let leftInterface = VideoContainer.mainContainer;
 
 interfaceSculpt.add(leftInterface);
 
