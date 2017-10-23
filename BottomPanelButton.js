@@ -57,9 +57,9 @@ export class BottomPanelButton extends R.Sculpt {
                     this.pin.visible = false;
                 }else {
                     if(this.pin.isReady){
-                        this.mat.color.r = 0.4;
-                        this.mat.color.g = 0.4;
-                        this.mat.color.b = 0.4;
+                        this.mat.color.r = 0.8;
+                        this.mat.color.g = 0.8;
+                        this.mat.color.b = 0.8;
                     }
                 }
                 this.selected = false;

@@ -10,9 +10,10 @@ const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const size = require('gulp-size');
 const connect = require('gulp-connect');
-const sourcemaps = require('gulp-sourcemaps');
 const newer = require('gulp-newer');
-const JS = ['!systemjs/**/*.*', '!node_modules/**/*.*', '!dist/**/*.*', '!build/**/*.*', '*.js', '**/*.js'];
+const sourcemaps = require('gulp-sourcemaps');
+
+const JS = ['!systemjs/**/*.*', '!node_modules/**/*.*', '!dist/**/*.*', '!build/**/*.*', '!gulpfile.js', '*.js', '**/*.js'];
 
 const ERROR_MESSAGE = {
     errorHandler: notify.onError("Error: <%= error.message %>")
@@ -21,11 +22,16 @@ const ERROR_MESSAGE = {
 gulp.task('js', () => {
     const s = size({title: 'JS -> ', pretty: true});
     return gulp.src(JS)
+        .pipe(plumber(ERROR_MESSAGE))
         .pipe(babel())
         .pipe(s)
-        .pipe(newer('./build'))
+        .pipe(newer('./build/app'))
         .pipe(plumber.stop())
         .pipe(gulp.dest('./build'))
+        .pipe(notify({
+            onLast: true,
+            message: () => `JS - Total size ${s.prettySize}`
+        }));
 });
 
 
@@ -53,5 +59,5 @@ gulp.task('dev', (done) => {
 
 
 gulp.task('default', (done) => {
-    sequence('js', ['watch', 'connect'], done);
+    sequence('watch', ['js', 'connect'], done);
 });

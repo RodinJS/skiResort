@@ -27,7 +27,7 @@ export class Pin extends R.Sculpt {
         this.add(pinIcon);
 
         pinIcon.on(R.CONST.UPDATE, (e) => {
-            pinIcon.globalRotation.y = R.Avatar.active.HMDCamera.rotation.y;
+            pinIcon.rotation.y = pinIcon.parent.parent.parent.rotation.y;
         });
     }
 }
