@@ -1,146 +1,146 @@
 export const weatherInfo = [
     {
         time: '12p',
-        icon: 'Cloudy.png',
+        icon: 'Snowing.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '20°'
     },
     {
         time: '1a',
-        icon: 'Cloudy.png',
+        icon: 'Snowing.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '18°'
     },
     {
         time: '2a',
         icon: 'Cloudy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '17°'
     },
     {
         time: '3a',
-        icon: 'Cloudy.png',
+        icon: 'Lightning.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '16°'
     },
     {
         time: '4a',
         icon: 'Cloudy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '15°'
     },
     {
         time: '5a',
         icon: 'Cloudy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '15°'
     },
     {
         time: '6a',
-        icon: 'Cloudy.png',
+        icon: 'Rainy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '16°'
     },
     {
         time: '7a',
-        icon: 'Cloudy.png',
+        icon: 'Rainy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '18°'
     },
     {
         time: '8a',
         icon: 'Cloudy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '19°'
     },
     {
         time: '9a',
-        icon: 'Cloudy.png',
+        icon: 'Lightning.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '21°'
     },
     {
         time: '10a',
-        icon: 'Cloudy.png',
+        icon: 'Lightning.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '23°'
     },
     {
         time: '11a',
-        icon: 'Cloudy.png',
+        icon: 'Lightning.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '25°'
     },
     {
         time: '12a',
-        icon: 'Cloudy.png',
+        icon: 'Sunny.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '28°'
     },
     {
         time: '1p',
-        icon: 'Cloudy.png',
+        icon: 'Sunny.png',
         description: 'Storm',
         temperature: '30°'
     },
     {
         time: '2p',
-        icon: 'Cloudy.png',
+        icon: 'Lightning.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '34°'
     },
     {
         time: '3p',
-        icon: 'Cloudy.png',
+        icon: 'Partly_sunny.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '36°'
     },
     {
         time: '4p',
-        icon: 'Cloudy.png',
+        icon: 'Partly_sunny.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '37°'
     },
     {
         time: '5p',
         icon: 'Cloudy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '35°'
     },
     {
         time: '6p',
         icon: 'Cloudy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '32°'
     },
     {
         time: '7p',
-        icon: 'Cloudy.png',
+        icon: 'Rainy.png',
         description: 'Storm',
         temperature: '30°'
     },
     {
         time: '8p',
-        icon: 'Cloudy.png',
+        icon: 'Rainy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '28°'
     },
     {
         time: '9p',
-        icon: 'Cloudy.png',
+        icon: 'Rainy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '25°'
     },
     {
         time: '10p',
         icon: 'Cloudy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '23°'
     },
     {
         time: '11p',
         icon: 'Cloudy.png',
         description: 'Storm',
-        temperature: '30°'
+        temperature: '21°'
     }
 ];

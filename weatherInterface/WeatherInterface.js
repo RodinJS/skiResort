@@ -1,4 +1,5 @@
 import * as R from 'rodin/core';
+import {infoInterface} from './infoInterface.js';
 import {bottomInterfaceGrid} from './bottomInterfaceGrid.js';
 
 export class WeatherInterface extends R.Sculpt {
@@ -21,6 +22,10 @@ export class WeatherInterface extends R.Sculpt {
         this.topInterface.on(R.CONST.READY, () => {
             this.add(this.topInterface);
             this.topInterface.position.y = .1 + (this.interfaceHeight - this.topInterface.height) / 2;
+
+            const interfaceInfo = new infoInterface(this.topInterface.height);
+            interfaceInfo.position.z = 0.01;
+            this.topInterface.add(interfaceInfo)
         });
 
         this.bottomInterface = new R.Element({
@@ -39,10 +44,9 @@ export class WeatherInterface extends R.Sculpt {
             this.bottomInterface.position.y = .1 - (this.interfaceHeight - this.bottomInterface.height) / 2;
 
             const grid = new bottomInterfaceGrid(4, this.bottomInterface.width * ( 1 - 0.1 )/4 , this.bottomInterface.height * 0.9);
+            grid.position.z = 0.01;
             this.bottomInterface.add(grid)
         });
-
-
     }
 }
 

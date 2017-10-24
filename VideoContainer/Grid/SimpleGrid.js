@@ -30,7 +30,7 @@ export const setView = (thumbs, scene) => {
     }
     view = null;
     view = new R.VerticalGrid(1, 3, 0.5, 0.4);
-    view.sculpt.position.set(0, -0.02, .02);
+    view.sculpt.position.set(0, -0.02, .01);
 
     view.on(R.CONST.SCROLL_START, (evt) => {
         evt.stopPropagation();

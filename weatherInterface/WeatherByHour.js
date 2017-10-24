@@ -2,7 +2,6 @@ import * as R from 'rodin/core';
 
 const mainURL = 'img/Weather icons/';
 const url64 = mainURL + '64/';
-const url256 = mainURL + '256/';
 
 export class WeatherByHour extends R.Sculpt {
     constructor(time, icon, description, temperature, width, height) {

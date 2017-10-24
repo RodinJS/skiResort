@@ -86,7 +86,6 @@ class VideoContainer {
             this.infoText.on(R.CONST.READY, (e) => {
                 this.infoText.center();
                 this.infoText.position.set(-.075, .58, .05);
-                this.infoText.rotation.y = 0.1;
                 this.mainContainer.add(this.infoText);
             });
 
